@@ -3,24 +3,31 @@ package com.example.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="Note")
+@Table(name = "Note")
 public class Note {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_Note")
+    @Column(name = "id_Note")
     private int idNote;
 
     @ManyToOne
-    @JoinColumn(name="id_Etudiant")
+    @JoinColumn(name = "id_Etudiant")
     private Etudiant etudiant;
 
     @ManyToOne
-    @JoinColumn(name="id_Matiere")
+    @JoinColumn(name = "id_Prof")
+    private Prof prof;
+
+    @ManyToOne
+    @JoinColumn(name = "id_Matiere")
     private Matiere matiere;
 
-    @Column(name="note")
+    @Column(name = "note")
     private double note;
+
+    public Note() {
+    }
 
     public int getIdNote() {
         return idNote;
@@ -36,6 +43,14 @@ public class Note {
 
     public void setEtudiant(Etudiant etudiant) {
         this.etudiant = etudiant;
+    }
+
+    public Prof getProf() {
+        return prof;
+    }
+
+    public void setProf(Prof prof) {
+        this.prof = prof;
     }
 
     public Matiere getMatiere() {
