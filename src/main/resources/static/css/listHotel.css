@@ -1,0 +1,592 @@
+/* ========================================
+   listHotel.css - Version Premium DriveReserv
+   Design pour la gestion des hôtels
+   ======================================== */
+
+/* Importation des polices modernes */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* Design System avec vos couleurs */
+:root {
+    /* Vos couleurs */
+    --primary-dark: #0a0f1c;
+    --primary-medium: #141b2b;
+    --primary-light: #1e293b;
+    --accent-gold: #f59e0b;
+    --accent-gold-light: #fbbf24;
+    --accent-gold-dark: #d97706;
+    --danger: #ef4444;
+    --info: #3b82f6;
+    --hotel-primary: #8b5cf6;
+    --hotel-secondary: #a78bfa;
+    --hotel-accent: #c084fc;
+    
+    /* Niveaux de gris */
+    --gray-50: #f8fafc;
+    --gray-100: #f1f5f9;
+    --gray-200: #e2e8f0;
+    --gray-300: #cbd5e1;
+    --gray-400: #94a3b8;
+    --gray-500: #64748b;
+    --gray-600: #475569;
+    --gray-700: #334155;
+    --gray-800: #1e293b;
+    --gray-900: #0f172a;
+    
+    /* Ombres */
+    --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.02);
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    --shadow-hotel: 0 4px 12px -2px rgba(139, 92, 246, 0.2);
+    
+    /* Bordures */
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+    --radius-xl: 12px;
+    --radius-full: 9999px;
+    
+    /* Transitions */
+    --transition-base: all 0.2s ease;
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, var(--gray-50), var(--gray-100));
+    color: var(--gray-900);
+}
+
+/* Conteneur principal */
+.hotels-container {
+    padding: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* En-tête de page */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--gray-200);
+}
+
+.page-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gray-900);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.title-icon {
+    font-size: 32px;
+}
+
+/* Boutons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition-base);
+    border: none;
+    font-family: 'Inter', sans-serif;
+}
+
+.btn-add {
+    background: var(--hotel-primary);
+    color: white;
+    box-shadow: var(--shadow-hotel);
+}
+
+.btn-add:hover {
+    background: var(--hotel-secondary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-search {
+    background: var(--primary-dark);
+    color: white;
+    padding: 12px 20px;
+}
+
+.btn-search:hover {
+    background: var(--primary-medium);
+    transform: translateY(-1px);
+}
+
+.btn-small {
+    padding: 8px 16px;
+    font-size: 13px;
+}
+
+.btn-primary {
+    background: var(--primary-dark);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--primary-medium);
+}
+
+.btn-icon {
+    font-size: 16px;
+}
+
+/* Barre d'outils */
+.toolbar {
+    margin-bottom: 25px;
+    padding: 20px;
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--gray-200);
+}
+
+.search-form {
+    max-width: 500px;
+}
+
+.search-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.search-label {
+    font-weight: 600;
+    color: var(--gray-700);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.label-icon {
+    font-size: 16px;
+    color: var(--accent-gold);
+}
+
+.search-input-group {
+    display: flex;
+    gap: 10px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    transition: var(--transition-base);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--hotel-primary);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+/* Wrapper du tableau */
+.table-wrapper {
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--gray-200);
+    overflow: auto;
+}
+
+/* Tableau */
+.hotels-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    min-width: 900px;
+}
+
+/* En-tête */
+.hotels-table thead tr {
+    background: var(--gray-50);
+    border-bottom: 2px solid var(--gray-200);
+}
+
+.hotels-table th {
+    color: var(--gray-700);
+    font-weight: 600;
+    padding: 16px 20px;
+    text-align: left;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Corps du tableau */
+.hotels-table tbody tr {
+    border-bottom: 1px solid var(--gray-100);
+    transition: var(--transition-base);
+}
+
+.hotels-table tbody tr:hover {
+    background: var(--gray-50);
+}
+
+.hotels-table tbody tr.even {
+    background-color: white;
+}
+
+.hotels-table tbody tr.odd {
+    background-color: var(--gray-50);
+}
+
+.hotels-table td {
+    padding: 16px 20px;
+    color: var(--gray-700);
+}
+
+/* Colonnes */
+.col-id { width: 80px; }
+.col-nom { width: 250px; }
+.col-lieu { width: 200px; }
+.col-distance { width: 150px; }
+.col-actions { width: 120px; }
+
+/* Badges */
+.id-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    background: var(--gray-100);
+    color: var(--gray-700);
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.hotel-name-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    background: linear-gradient(135deg, var(--gray-50), white);
+    border-radius: var(--radius-full);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gray-800);
+    border: 1px solid var(--gray-200);
+}
+
+.badge-icon {
+    font-size: 14px;
+}
+
+.lieu-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: var(--hotel-primary);
+    color: white;
+    border-radius: var(--radius-full);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.distance-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: var(--accent-gold-light);
+    color: var(--accent-gold-dark);
+    border-radius: var(--radius-full);
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid var(--accent-gold);
+}
+
+/* Actions */
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: var(--transition-base);
+    position: relative;
+    background: white;
+    border: 1px solid var(--gray-200);
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.action-btn.edit-btn {
+    color: var(--info);
+}
+
+.action-btn.edit-btn:hover {
+    background: var(--info);
+    color: white;
+    border-color: var(--info);
+}
+
+.action-btn.delete-btn {
+    color: var(--danger);
+}
+
+.action-btn.delete-btn:hover {
+    background: var(--danger);
+    color: white;
+    border-color: var(--danger);
+}
+
+.action-icon {
+    font-size: 16px;
+}
+
+.action-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gray-800);
+    color: white;
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 11px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition-base);
+    margin-bottom: 8px;
+    pointer-events: none;
+}
+
+.action-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--gray-800) transparent transparent transparent;
+}
+
+.action-btn:hover .action-tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* État vide */
+.empty-row td {
+    padding: 60px 20px;
+}
+
+.empty-state {
+    text-align: center;
+    color: var(--gray-500);
+}
+
+.empty-icon {
+    font-size: 48px;
+    display: block;
+    margin-bottom: 15px;
+    opacity: 0.5;
+}
+
+.empty-state p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+/* Animations */
+.table-row {
+    animation: slideInRow 0.3s ease;
+    animation-fill-mode: both;
+}
+
+@keyframes slideInRow {
+    from {
+        opacity: 0;
+        transform: translateX(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Délais d'animation */
+.table-row:nth-child(1) { animation-delay: 0.02s; }
+.table-row:nth-child(2) { animation-delay: 0.04s; }
+.table-row:nth-child(3) { animation-delay: 0.06s; }
+.table-row:nth-child(4) { animation-delay: 0.08s; }
+.table-row:nth-child(5) { animation-delay: 0.10s; }
+.table-row:nth-child(6) { animation-delay: 0.12s; }
+.table-row:nth-child(7) { animation-delay: 0.14s; }
+.table-row:nth-child(8) { animation-delay: 0.16s; }
+.table-row:nth-child(9) { animation-delay: 0.18s; }
+.table-row:nth-child(10) { animation-delay: 0.20s; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .hotels-container {
+        padding: 20px;
+    }
+    
+    .page-title {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hotels-container {
+        padding: 15px;
+    }
+
+    .page-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+
+    .search-input-group {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .action-tooltip {
+        display: none;
+    }
+
+    .table-wrapper {
+        border-radius: var(--radius-md);
+    }
+}
+
+@media (max-width: 480px) {
+    .page-title {
+        font-size: 22px;
+    }
+    
+    .hotels-table th,
+    .hotels-table td {
+        padding: 12px;
+    }
+}
+
+/* Mode sombre */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(135deg, var(--gray-900), var(--gray-800));
+    }
+
+    .toolbar,
+    .table-wrapper,
+    .search-input,
+    .action-btn {
+        background: var(--gray-800);
+        border-color: var(--gray-700);
+    }
+
+    .page-title {
+        color: white;
+    }
+
+    .search-input {
+        color: white;
+    }
+
+    .hotels-table thead tr {
+        background: var(--gray-900);
+    }
+
+    .hotels-table th {
+        color: var(--gray-300);
+    }
+
+    .hotels-table tbody tr.even {
+        background-color: var(--gray-800);
+    }
+
+    .hotels-table tbody tr.odd {
+        background-color: var(--gray-900);
+    }
+
+    .hotels-table td {
+        color: var(--gray-300);
+    }
+
+    .hotels-table tbody tr:hover {
+        background: var(--gray-700);
+    }
+
+    .id-badge {
+        background: var(--gray-700);
+        color: var(--gray-300);
+    }
+
+    .hotel-name-badge {
+        background: linear-gradient(135deg, var(--gray-800), var(--gray-700));
+        border-color: var(--gray-600);
+        color: white;
+    }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--gray-100);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gray-400);
+    border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-gold);
+}

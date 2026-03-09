@@ -1,0 +1,115 @@
+1- Organisation de base de donne : 
+   M'creer base : OK 
+
+2 - Objectif : Y a beaucoup de prof qui donne note pour un 
+eleve a un matiere et apres on prend le note par rapport a la difference 
+
+
+    
+    1 -Verification : 
+        . Manana note maromaro ve io Matiere ray io pour chaque Etudiant : 
+            -  SELECT id_Etudiant,id_Matiere, COUNT(note) from Note GROUP BY id_Matiere , id_Etudiant;
+
+        .  
+         
+    2 - Alaina ny matiere : jerena oe firy ny note ao anatin'io matiere ray io ho an'ny etudiant tsirairay avy 
+                            de rehefa hita dia avy eo mba ahazona ny difference de note amMatiere ray de Note[0] -Note[1] dia raha mbola misy de Note[0]-Note[2]
+                            dia aveo atambatra ny azo tamreo de iny ny difference : ohatra Misy Matiere Mathematique , de Etudiant1 notsarain'ny Prof 3 dia nahazo 
+                            12,10,11 Hijerena ny note finaleny a , dia jerena aloha ny difference zani oe 12-10 = 2 , 12-11=1 , 10-11=1 dia atambatra ireo difference reo 
+                            2+1+1 = 4 , donc difference zani 4 , dia avy eo amizay manana table Parametre isika :
+                                        CREATE TABLE Parametre(
+                                            id_Parametre INT PRIMARY KEY,
+                                            id_Operateur INT,
+                                            id_Matiere INT,
+                                            id_Resolution INT,
+                                            Seuil INT,
+
+                                            Foreign Key (id_Matiere) REFERENCES Matiere(id_Matiere),
+                                            Foreign Key (id_Resolution) REFERENCES Resolution(id_Resolution),
+                                            Foreign Key (id_Operateur) REFERENCES Operateur(id_Operateur)
+                                        );
+                                        CREATE TABLE Operateur (
+                                                id_Operateur INT PRIMARY KEY,
+                                                nom VARCHAR(225)
+                                            );
+
+                                            CREATE TABLE Resolution(
+                                                id_Resolution INT PRIMARY KEY,
+                                                nom VARCHAR(225) 
+                                            );
+                            
+                            Ny ao amin'ny Resolution de plus petit , Plus grand , Moyenne 
+                            Ny ao amin'ny Operateur dia signe Superieur , Inferieur 
+
+                            Ao amin'ny Parametre efa misy an'io Seuil io ohatra oe 3 , de A chaque matiere manana ny seuil (Difference)
+                            exemple de parametre : INSERT INTO Parametre(id_Parametre,id_Operateur,id_Matiere,id_Resolution,Seuil) VALUES
+                                                    (1,1,1,2,5),
+                                                    (2,2,1,1,3),
+                                                    (3,1,1,3,6);
+                            izany oe matiere 1 : operateur1 superieu , Resolution2 :Plus grand : seuil :5
+                                            si seuil superieur que difference sur Code qu'on a deja calculer en haut 
+                                                 il est plus grand , on prend le plus grand note .
+                                                 si non on fait le deuxieme 
+                                            Operateur 2 Inferiuer , Resolution1 : plus petit seuil 3
+                                            si seuil Inferieur que difference sur Code qu'on a deja calculer en haut 
+                                                 il est plus petit , on prend le plus petit note .
+                                                 si non on fait le trasieme
+                                            Operateur1  superieur , Resolution3: Moyenne seuil 6
+                                            si seuil superieur que difference sur Code qu'on a deja calculer en haut 
+                                                 il est Moyenne , on fait le calcul pour moyenne : 12+10+11 = 33 /3 = 11.
+                                                
+Todo Finale : 
+
+1. récupérer les notes d’un étudiant pour une matière : 
+             SELECT note FROM Note WHERE id_Etudiant = 1 AND id_Matiere = 1;
+ . Mettre les notes dans un tableau (dans le code) : 
+             notes = [12,10,11]
+
+2. calculer toutes les différences entre les notes
+
+3. additionner les différences
+
+4. récupérer les paramètres de la matière :
+ SELECT * FROM Parametre WHERE id_Matiere = 1;
+
+5. comparer difference avec seuil selon operateur :
+Operateur : >
+Seuil : 5
+
+6. appliquer resolution :
+      - plus grand → max(note)
+      - plus petit → min(note)
+      - moyenne → avg(note)
+7. enregistrer la note finale
+
+
+
+Function a Creer :
+        getNotes(etudiant, matiere)
+        calculDifference(notes)
+        getParametre(matiere)
+        maxNote(notes)
+        minNote(notes)
+        moyenne(notes)
+        insertNoteFinale()
+
+Class A creer : Note.java
+                Matiere.java
+                Parametre.java
+                Prof.java
+                Operateur.java
+                Resolution.java
+                Etudiant.java
+                NoteService.java
+
+
+
+
+
+
+
+
+
+
+
+
