@@ -115,23 +115,25 @@ public class NoteService {
         }
 
         double diff = calculDifference(notes);
-
-        // récupérer les paramètres
         List<Parametre> parametres =
                 parametreRepository.findByIdMatiereOrderByIdParametreAsc(idMatiere);
 
         for(Parametre p : parametres){
-
             boolean condition = false;
-
-            // Operateur >
             if(p.getIdOperateur() == 1){
                 condition = diff > p.getSeuil();
             }
 
-            // Operateur <
             if(p.getIdOperateur() == 2){
                 condition = diff < p.getSeuil();
+            }
+
+               if(p.getIdOperateur() == 3){
+                condition = diff >= p.getSeuil();
+            }
+
+                if(p.getIdOperateur() == 4){
+                condition = diff <= p.getSeuil();
             }
 
             if(condition){

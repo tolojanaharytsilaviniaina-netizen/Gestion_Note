@@ -1,0 +1,454 @@
+/* Import des polices Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
+
+:root {
+    --primary: #4158D0;
+    --secondary: #C850C0;
+    --tertiary: #FFCC70;
+    --dark: #2c3e50;
+    --light: #f8f9fa;
+    --success: #00b09b;
+    --gradient: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    --shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    --shadow-hover: 0 30px 50px rgba(0, 0, 0, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Effet de particules animées en arrière-plan */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);
+    animation: particles 15s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes particles {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    33% { transform: scale(1.1) rotate(2deg); }
+    66% { transform: scale(0.9) rotate(-2deg); }
+}
+
+/* Décoration flottante */
+.floating-decoration {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.floating-decoration span {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    border-radius: 50%;
+    animation: float 20s infinite;
+}
+
+.floating-decoration span:nth-child(1) {
+    top: 10%;
+    left: 10%;
+    width: 200px;
+    height: 200px;
+    animation-delay: 0s;
+}
+
+.floating-decoration span:nth-child(2) {
+    bottom: 20%;
+    right: 15%;
+    width: 300px;
+    height: 300px;
+    animation-delay: -5s;
+}
+
+.floating-decoration span:nth-child(3) {
+    top: 40%;
+    right: 25%;
+    width: 150px;
+    height: 150px;
+    animation-delay: -10s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-50px) rotate(180deg); }
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    animation: containerAppear 1s ease-out;
+}
+
+@keyframes containerAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Carte principale */
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 40px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: var(--shadow-hover);
+}
+
+/* En-tête avec effet glassmorphisme */
+.card-header {
+    background: var(--gradient);
+    padding: 40px 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.card-header h2 {
+    color: white;
+    font-size: 3em;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    position: relative;
+    z-index: 1;
+    margin: 0;
+}
+
+.card-header h2 i {
+    margin: 0 15px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.card-header .subtitle {
+    color: rgba(255,255,255,0.9);
+    font-size: 1.1em;
+    margin-top: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Contenu de la carte */
+.card-content {
+    padding: 40px;
+}
+
+/* Statistiques */
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-radius: 20px;
+    flex: 1;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.stat-value {
+    font-size: 2.5em;
+    font-weight: 800;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+}
+
+.stat-label {
+    color: var(--dark);
+    font-weight: 500;
+    margin-top: 10px;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 1px;
+}
+
+/* Tableau stylisé */
+.table-wrapper {
+    background: white;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin: 30px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: 600;
+    font-size: 1.2em;
+    padding: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+th::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255,255,255,0.3) 0%,
+        rgba(255,255,255,0.1) 50%,
+        transparent 50%,
+        transparent 100%
+    );
+    transform: rotate(45deg);
+    animation: shine 3s infinite;
+}
+
+td {
+    padding: 18px 20px;
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: 500;
+    color: var(--dark);
+    border-bottom: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    cursor: pointer;
+}
+
+tr:hover {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    transform: scale(1.02) translateX(10px);
+    box-shadow: 0 10px 30px rgba(243, 87, 108, 0.4);
+    z-index: 10;
+}
+
+tr:hover td {
+    color: white;
+    border-bottom-color: transparent;
+}
+
+/* Badges de notes */
+td::before {
+    content: '📊';
+    margin-right: 10px;
+    font-size: 1.2em;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+tr:hover td::before {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Note finale améliorée */
+.note-finale {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 30px;
+    padding: 30px;
+    margin-top: 30px;
+    position: relative;
+    overflow: hidden;
+    animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4); }
+    50% { box-shadow: 0 20px 50px rgba(102, 126, 234, 0.8); }
+}
+
+.note-finale::before {
+    content: '★';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 100px;
+    color: rgba(255, 255, 255, 0.1);
+    animation: starRotate 10s linear infinite;
+}
+
+@keyframes starRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.note-finale-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.note-finale-label {
+    color: rgba(255,255,255,0.9);
+    font-size: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.note-finale-value {
+    font-size: 5em;
+    font-weight: 800;
+    color: white;
+    line-height: 1;
+    text-shadow: 0 0 20px rgba(255,255,255,0.5);
+    display: inline-block;
+    position: relative;
+}
+
+.note-finale-value span {
+    font-size: 0.5em;
+    margin-left: 10px;
+    opacity: 0.7;
+}
+
+/* Barre de progression */
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 10px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--tertiary), var(--secondary), var(--primary));
+    border-radius: 10px;
+    animation: progressPulse 2s ease-in-out infinite;
+    width: 75%; /* À ajuster selon la note */
+}
+
+@keyframes progressPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+/* Bouton d'action */
+.action-button {
+    display: inline-block;
+    padding: 15px 40px;
+    background: white;
+    color: var(--primary);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9em;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    border: 2px solid white;
+    cursor: pointer;
+}
+
+.action-button:hover {
+    background: transparent;
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card-header h2 {
+        font-size: 2em;
+    }
+    
+    .stats-container {
+        flex-direction: column;
+    }
+    
+    .note-finale-value {
+        font-size: 3em;
+    }
+    
+    .card-content {
+        padding: 20px;
+    }
+}

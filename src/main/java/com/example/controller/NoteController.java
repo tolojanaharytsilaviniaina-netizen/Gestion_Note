@@ -57,35 +57,32 @@ public class NoteController {
     // AJOUT NOTE
     // =========================
     @PostMapping("/save")
-    public String saveNote(@RequestParam int idEtudiant,
-                           @RequestParam int idProf,
-                           @RequestParam int idMatiere,
-                           @RequestParam double note) {
+public String saveNote(@RequestParam int idEtudiant,
+                       @RequestParam int idProf,
+                       @RequestParam int idMatiere,
+                       @RequestParam double note) {
 
-        Note n = new Note();
+    // Récupérer les entités existantes
+    Etudiant e = etudiantRepository.findById(idEtudiant)
+            .orElseThrow(() -> new RuntimeException("Étudiant introuvable : " + idEtudiant));
 
-        // créer objet Etudiant
-        Etudiant e = new Etudiant();
-        e.setIdEtudiant(idEtudiant);
+    Prof p = profRepository.findById(idProf)
+            .orElseThrow(() -> new RuntimeException("Prof introuvable : " + idProf));
 
-        // créer objet Prof
-        Prof p = new Prof();
-        p.setIdProf(idProf);
+    Matiere m = matiereRepository.findById(idMatiere)
+            .orElseThrow(() -> new RuntimeException("Matière introuvable : " + idMatiere));
 
-        // créer objet Matiere
-        Matiere m = new Matiere();
-        m.setIdMatiere(idMatiere);
+    // Créer et sauvegarder la note
+    Note n = new Note();
+    n.setEtudiant(e);
+    n.setProf(p);
+    n.setMatiere(m);
+    n.setNote(note);
 
-        // affecter les objets à Note
-        n.setEtudiant(e);
-        n.setProf(p);
-        n.setMatiere(m);
-        n.setNote(note);
+    noteRepository.save(n);
 
-        noteRepository.save(n);
-
-        return "redirect:/notes"; // Redirection vers la liste
-    }
+    return "redirect:/notes";
+}
 
     // =========================
     // DELETE NOTE
@@ -98,28 +95,34 @@ public class NoteController {
         return "redirect:/notes";
     }
 
-    // =========================
-    // CALCUL NOTE FINALE
-    // =========================
-    @GetMapping("/finale")
-    public String noteFinale(@RequestParam int idEtudiant,
-                             @RequestParam int idMatiere,
-                             Model model) {
 
-        var notes = noteService.getNotes(idEtudiant, idMatiere);
+    @GetMapping("/finaleForm")
+public String finaleForm(Model model){
+    model.addAttribute("etudiants", etudiantRepository.findAll());
+    model.addAttribute("matieres", matiereRepository.findAll());
+    return "finaleForm"; 
+}
 
-        double diff = 0;
-        double finalNote = 0;
+ 
+   @PostMapping("/calculFinale")
+public String calculNoteFinaleForm(@RequestParam int idEtudiant,
+                                   @RequestParam int idMatiere,
+                                   Model model) {
 
-        if (!notes.isEmpty()) {
-            diff = noteService.calculDifference(notes);
-            finalNote = noteService.calculNoteFinale(idEtudiant, idMatiere);
-        }
+    var notes = noteService.getNotes(idEtudiant, idMatiere);
 
-        model.addAttribute("notes", notes);
-        model.addAttribute("difference", diff);
-        model.addAttribute("noteFinale", finalNote);
+    double diff = 0;
+    double finalNote = 0;
 
-        return "notefinale"; // JSP: notefinale.jsp
+    if(!notes.isEmpty()){
+        diff = noteService.calculDifference(notes);
+        finalNote = noteService.calculNoteFinale(idEtudiant, idMatiere);
     }
+
+    model.addAttribute("notes", notes);
+    model.addAttribute("difference", diff);
+    model.addAttribute("noteFinale", finalNote);
+
+    return "notefinale";
+}
 }
