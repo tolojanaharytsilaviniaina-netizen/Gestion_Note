@@ -41,4 +41,21 @@ public class Parametre {
     public double getSeuil() {
         return seuil;
     }
+
+
+    public void setIdOperateur(int idOperateur) {
+    this.idOperateur = idOperateur;
+}
+
+public void setIdMatiere(int idMatiere) {
+    this.idMatiere = idMatiere;
+}
+
+public void setIdResolution(int idResolution) {
+    this.idResolution = idResolution;
+}
+
+public void setSeuil(double seuil) {
+    this.seuil = seuil;
+}
 }
