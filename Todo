@@ -123,3 +123,64 @@ CRUD :
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ici mon function     public void ParcouirirParametreAvecDiff(){
+
+   double diff = calculDifference(getNotes(0, 0));
+
+     for(Parametre p : parametre){
+
+         for (int i = 0 , i<Parametre.size() ; i++){
+                        for (int j = 0 , i<Parametre.getEcart.size() ; i++){
+                             diff 
+                        }
+
+         }
+     }
+
+
+    }   Pour parcouirir Tous les parametre avec id -Note pour l'idMatiere , avec difference , operateur , resolution , ce que je veux Faire est de par exemple le difference est  3 , et on a sur le parametre : seuil(Ecart) 6 avec id operateur 1  resolution plus petit , et seuil 2 avec operateur 3 avec resolution Plus grand , on a deja le table Resolution ,  MariaDB [gestion_note]> select * from Operateur;
++--------------+------+
+| id_Operateur | nom  |
++--------------+------+
+|            1 | <    |
+|            2 | <=   |
+|            3 | >    |
+|            4 | >=   |
++--------------+------+
+4 rows in set (0.005 sec)
+
+MariaDB [gestion_note]> select * from Resolution;
++---------------+---------+
+| id_Resolution | nom     |
++---------------+---------+
+|             1 | Petit   |
+|             2 | Grand   |
+|             3 | Moyenne |
++---------------+---------+
+3 rows in set (0.004 sec)       ; 
+
+
+
+
+
+
+
