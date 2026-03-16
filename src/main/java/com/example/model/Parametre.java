@@ -58,4 +58,9 @@ public void setIdResolution(int idResolution) {
 public void setSeuil(double seuil) {
     this.seuil = seuil;
 }
+
+public static int size() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'size'");
+}
 }

@@ -79,19 +79,19 @@ INSERT INTO Parametre(id_Parametre,id_Operateur,id_Matiere,id_Resolution,Seuil) 
 
 
 INSERT INTO Etudiants VALUES
-(1, 'Jean', 101, 'L1'),
-(2, 'Marie', 102, 'L1'),
-(3, 'Paul', 103, 'L2');  
+(1, 'candidat1', 101, 'L1'),
+(2, 'candidat2', 102, 'L1');
+ 
 
 INSERT INTO Prof VALUES
-(1, 'Rakoto'),
-(2, 'Rabe'),
-(3, 'Rasoa');
+(1, 'correcteur1'),
+(2, 'Correcteur2'),
+(3, 'Correcteur3');
 
 INSERT INTO Matiere VALUES
-(1, 'Math', 201, 4),
-(2, 'Physique', 202, 3),
-(3, 'Informatique', 203, 5);
+(1, 'JAVA', 201, 4),
+(2, 'PHP', 202, 3);
+
 
 
 
@@ -109,9 +109,28 @@ CREATE TABLE Note (
 );
 
 INSERT INTO Note VALUES
+(1, 1, 1, 1, 15.0),
+(2, 1, 2, 1, 10.0),
+(3, 1, 3, 1, 12.0),
+(4, 2, 1, 1, 9.0),
+(5, 2, 2, 1, 8.0),
+(6, 2, 3, 1, 11.0),
 (7, 1, 1, 2, 10.0),
-(8, 1, 2, 2, 11.0),
-(9, 1, 3, 2, 12.5);
+(8, 1, 2, 2, 10.0),
+(9, 2, 1, 2, 13.0),
+(10, 2, 2, 2, 11.0);
+
+
+
+
+(4, 1, 2, 2, 11.0),
+
+
+
+(5, 2, 1, 1, 13.0),
+(6, 2, 2, 1, 10.0),
+(7, 2, 1, 2, 14.0),
+(8, 2, 2, 2, 16.0);
 
 
 
@@ -120,12 +139,17 @@ INSERT INTO Note VALUES
 (5, 2, 2, 2, 12.0),
 (6, 2, 3, 2, 17.5);
 
-INSERT INTO Operateur(id_Operateur,nom) VALUES(1,">");
-INSERT INTO Operateur(id_Operateur,nom) VALUES(2,"<");
+INSERT INTO Operateur(id_Operateur,nom) VALUES(3,">");
+INSERT INTO Operateur(id_Operateur,nom) VALUES(1,"<");
+INSERT INTO Operateur(id_Operateur,nom) VALUES(4,">=");
+INSERT INTO Operateur(id_Operateur,nom) VALUES(2,"<=");
+4
+5
+6
+7
 
-
-INSERT INTO Resolution(id_Resolution,nom) VALUES(1,"Plus Petit");
-INSERT INTO Resolution(id_Resolution,nom) VALUES(2,"Plus Grand");
+INSERT INTO Resolution(id_Resolution,nom) VALUES(1,"Petit");
+INSERT INTO Resolution(id_Resolution,nom) VALUES(2,"Grand");
 INSERT INTO Resolution(id_Resolution,nom) VALUES(3,"Moyenne");
 
 
