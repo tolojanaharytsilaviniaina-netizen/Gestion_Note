@@ -22,7 +22,7 @@
             <div class="card-header">
                 <h2>
                     <i class="fas fa-star"></i>
-                    NOTES
+                    NOTES - ETU003651
                     <i class="fas fa-star"></i>
                 </h2>
                 <div class="subtitle">Gestion des performances académiques</div>

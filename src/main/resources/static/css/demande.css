@@ -1,0 +1,136 @@
+/* ==========================================================================
+   demande.css - Formulaire Ajouter Demande
+   Style simple • propre • professionnel – 2025/2026
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: #f8fafc;
+    color: #111827;
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+/* Conteneur principal centré */
+.container {
+    max-width: 520px;
+    width: 90%;
+    margin: 60px auto;
+    background: white;
+    padding: 40px 32px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e5e7eb;
+}
+
+/* Titre */
+h2 {
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: #1e40af;          /* bleu pro */
+    margin-bottom: 32px;
+    text-align: center;
+    letter-spacing: -0.4px;
+}
+
+/* Formulaire */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+/* Labels */
+label {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 6px;
+}
+
+/* Inputs & Select */
+input[type="text"],
+select {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 0.97rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: #f9fafb;
+    color: #111827;
+    transition: all 0.18s ease;
+}
+
+input[type="text"]:focus,
+select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+    background: white;
+}
+
+/* Bouton principal */
+button[type="submit"] {
+    margin-top: 12px;
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    background: #1e40af;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+button[type="submit"]:hover {
+    background: #1e3a8a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.2);
+}
+
+button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* Lien vers la liste */
+a {
+    display: inline-block;
+    margin-top: 24px;
+    color: #1e40af;
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 0.95rem;
+    text-align: center;
+    width: 100%;
+}
+
+a:hover {
+    color: #1e3a8a;
+    text-decoration: underline;
+}
+
+/* Responsive léger */
+@media (max-width: 480px) {
+    .container {
+        padding: 28px 20px;
+        margin: 40px auto;
+    }
+
+    h2 {
+        font-size: 1.45rem;
+    }
+
+    button[type="submit"] {
+        padding: 13px;
+    }
+}

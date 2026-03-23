@@ -71,7 +71,7 @@
                         <i class="fas fa-star"></i>
                         Note
                     </label>
-                    <input type="text" name="note" id="note" class="form-control" 
+                    <input type="number" name="note" id="note" class="form-control" 
                            placeholder="Entrez la note" required>
                 </div>
             </div>
