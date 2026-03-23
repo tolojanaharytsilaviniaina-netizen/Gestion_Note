@@ -1,0 +1,19 @@
+ 1- CRUD :  Clients :
+    - Creation de Classe :
+        . Modele : Clients java 
+
+        . Repository : ClientsRepository .java  (Il y a deja une fonction save sur repository)
+        . Controlleur : 
+            /Clients : . Miantso ny parametre ilaina 
+                       . id , nom , prenom , Numero , Email
+                       . miantso repository (Save)
+        Service : 
+
+
+. Controlleur appele le service 
+. Service appele repository.save()
+
+
+
+ALTER TABLE Demande 
+MODIFY id_demande INT NOT NULL AUTO_INCREMENT;

@@ -1,39 +1,30 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <title>DriveReserv - Gestion Navette</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forage - Gestion</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
 </head>
 <body>
 
 <div class="sidebar">
-    <!-- Message de bienvenue en haut -->
-    <%-- <div class="welcome-message">
-        <h4>Bienvenue Chez DriveReserv</h4>
-        <p>Assurez votre confort dès maintenant : veillez à réserver un réservoir en utilisant votre numéro de téléphone.</p>
-    </div> --%>
-    
-    <!-- Logo -->
     <div class="logo-container">
-        <img src="${pageContext.request.contextPath}/css/logo.png" alt="DriveReserv Logo">
+        <img src="${pageContext.request.contextPath}/css/Forage.png" alt="Logo Forage" width="140">
     </div>
-    
-    <!-- Titre -->
-    <h3>DriveReserv</h3>
-    
-    <!-- Navigation -->
+
+    <h1>Forage</h1>
+
     <nav>
-        <a href="${pageContext.request.contextPath}/reservations" class="nav-link">📋 Liste reservation</a>
-        <a href="${pageContext.request.contextPath}/vehicules" class="nav-link">🚗 Liste vehicle</a>
-        <a href="${pageContext.request.contextPath}/hotels" class="nav-link">🏨 Liste Hotel</a>
+        <a href="${pageContext.request.contextPath}/client/formulaire">Ajouter Client</a>
+        <a href="${pageContext.request.contextPath}/client/liste">Liste Clients</a>
+        <a href="${pageContext.request.contextPath}/Demande/formulaire">Ajouter Demande</a>
+        <a href="${pageContext.request.contextPath}/Demande/liste">Liste Demandes</a>
     </nav>
-    
-    <!-- Avertissement (fond jaune comme sur le modèle) -->
-    <div class="warning">
-        <p><strong>Avertissement 2025 - 2026 (Prom Magazine)</strong></p>
+
+    <div class="sidebar-footer">
+        <p>© 2025–2026 Forage System</p>
     </div>
 </div>
 
